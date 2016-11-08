@@ -4,7 +4,8 @@
   "description": "BabylonJS boiplerplate with webpack, typescript and mocha/chai",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dashboard -- webpack-dev-server --inline --content-base public/"
+    "start": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --inline --content-base public/",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "babel-loader": "^6.2.7",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
+    "cross-env": "^3.1.3",
     "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
