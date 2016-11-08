@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const SRC_PATH = path.join(__dirname, 'src', 'index.js');
+const SRC_PATH = path.join(__dirname, 'src', 'entry.js');
 const BUILD_PATH = path.join(__dirname, 'public');
 
 const DashboardPlugin = require('webpack-dashboard/plugin');
