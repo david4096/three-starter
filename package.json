@@ -33,7 +33,7 @@
     "webpack-dev-server": "^2.1.0-beta.10"
   },
   "dependencies": {
-    "babylonjs": "^2.4.1",
-    "ramda": "^0.22.1"
+    "ramda": "^0.22.1",
+    "three": "^0.82.1"
   }
 }
