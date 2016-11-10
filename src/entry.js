@@ -1,24 +1,26 @@
-import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, Mesh } from 'babylonjs';
+import {
+  Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial,
+  Mesh,
+} from 'three';
 
-const canvas = document.getElementById('main');
-const engine = new Engine(canvas, true);
+const scene = new Scene();
+const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const createScene = () => {
-  const scene = new Scene(engine);
-  const camera = new FreeCamera('camera1', new Vector3(0, 5, -10), scene);
+const renderer = new WebGLRenderer();
 
-  camera.setTarget(Vector3.Zero());
-  camera.attachControl(canvas, false);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-  Mesh.CreateGround('ground1', 6, 6, 2, scene);
-  new HemisphericLight('light1', new Vector3(0, 1, 0), scene);
+const geometry = new BoxGeometry(1, 1, 1);
+const material = new MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new Mesh(geometry, material);
+scene.add(cube);
 
-  const sphere = Mesh.CreateSphere('sphere1', 16, 2, scene);
-  sphere.position.y = 1;
+camera.position.z = 5;
 
-  return scene;
-};
+function render() {
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+}
 
-const scene = createScene();
-
-engine.runRenderLoop(() => { scene.render(); });
+render();
